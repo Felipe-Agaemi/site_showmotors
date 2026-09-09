@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - Oficina Show Motors</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<header class="topo">
+
+    <div class="lado-esquerdo">
+
+        <button class="botao-menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <h1 class="titulo">
+            Oficina Show Motors
+        </h1>
+
+    </div>
+
+    <div class="usuario">
+
+        <div>
+            <div class="nome-usuario">
+                Carlos Mendes
+            </div>
+
+            <div class="cargo">
+                Gerente
+            </div>
+        </div>
+
+        <div class="foto-usuario">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+    </div>
+
+</header>
+
+<main class="conteudo">
+
+    <div class="cabecalho-secao">
+
+        <h2>
+            <i class="fa-solid fa-chart-column"></i>
+            Relatórios Gerenciais
+        </h2>
+
+        <div class="filtros-relatorio">
+
+            <input
+                type="date"
+                class="campo-relatorio">
+
+            <input
+                type="date"
+                class="campo-relatorio">
+
+            <button class="btn-filtrar">
+                Filtrar
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- KPIs -->
+
+    <div class="grade-indicadores">
+
+        <div class="card-indicador">
+
+            <div class="icone-indicador">
+                <i class="fa-solid fa-sack-dollar"></i>
+            </div>
+
+            <div>
+                <span class="titulo-indicador">
+                    Faturamento Mensal
+                </span>
+
+                <h3>R$ 48.750,00</h3>
+            </div>
+
+        </div>
+
+        <div class="card-indicador">
+
+            <div class="icone-indicador">
+                <i class="fa-solid fa-car"></i>
+            </div>
+
+            <div>
+                <span class="titulo-indicador">
+                    Veículos Atendidos
+                </span>
+
+                <h3>182</h3>
+            </div>
+
+        </div>
+
+        <div class="card-indicador">
+
+            <div class="icone-indicador">
+                <i class="fa-solid fa-wrench"></i>
+            </div>
+
+            <div>
+                <span class="titulo-indicador">
+                    Serviços Executados
+                </span>
+
+                <h3>247</h3>
+            </div>
+
+        </div>
+
+        <div class="card-indicador">
+
+            <div class="icone-indicador">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+                <span class="titulo-indicador">
+                    Clientes Ativos
+                </span>
+
+                <h3>95</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- GRÁFICO -->
+
+    <section class="bloco-relatorio">
+
+        <div class="titulo-bloco">
+            Faturamento por Mês
+        </div>
+
+        <div class="grafico-falso">
+
+            <div class="barra" style="height:80px"></div>
+            <div class="barra" style="height:120px"></div>
+            <div class="barra" style="height:90px"></div>
+            <div class="barra" style="height:150px"></div>
+            <div class="barra" style="height:180px"></div>
+            <div class="barra" style="height:130px"></div>
+
+        </div>
+
+    </section>
+
+    <!-- TABELA -->
+
+    <section class="bloco-relatorio">
+
+        <div class="titulo-bloco">
+            Serviços Mais Realizados
+        </div>
+
+        <table class="tabela-relatorio">
+
+            <thead>
+
+                <tr>
+                    <th>Serviço</th>
+                    <th>Quantidade</th>
+                    <th>Receita</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Troca de Óleo</td>
+                    <td>58</td>
+                    <td>R$ 8.700,00</td>
+                </tr>
+
+                <tr>
+                    <td>Revisão Completa</td>
+                    <td>42</td>
+                    <td>R$ 14.700,00</td>
+                </tr>
+
+                <tr>
+                    <td>Freios</td>
+                    <td>35</td>
+                    <td>R$ 9.800,00</td>
+                </tr>
+
+                <tr>
+                    <td>Diagnóstico</td>
+                    <td>28</td>
+                    <td>R$ 2.800,00</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
+
+</body>
+</html>
