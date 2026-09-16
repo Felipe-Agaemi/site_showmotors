@@ -7,11 +7,11 @@ $mensagem = "";
 
 if(isset($_POST['entrar'])){
 
-    $nome_usuario = trim($_POST['nome_usuario']);
+    $email = trim($_POST['email']);
     $senha = $_POST['senha'];
 
-    $stmt = $conn->prepare("SELECT * FROM USUARIO WHERE nome_usuario = ?");
-    $stmt->bind_param("s", $nome_usuario);
+    $stmt = $conn->prepare("SELECT * FROM usuario WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $resultado = $stmt->get_result();
 
@@ -21,23 +21,23 @@ if(isset($_POST['entrar'])){
 
         if(password_verify($senha, $usuario['senha'])){
 
-            $_SESSION['usuario'] = $usuario['nome_usuario'];
+            $_SESSION['usuario'] = $usuario['nome_cliente'];
+            $_SESSION['email'] = $usuario['email'];
 
-            header("Location: home.php");
+            header("Location: index.php");
             exit();
 
         } else {
-            $mensagem = "Nome de usuário ou senha incorretos.";
+            $mensagem = "E-mail ou senha incorretos.";
         }
 
     } else {
-        $mensagem = "Nome de usuário ou senha incorretos.";
+        $mensagem = "E-mail ou senha incorretos.";
     }
 
     $stmt->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -49,12 +49,19 @@ if(isset($_POST['entrar'])){
 </head>
 
 <header class="topo">
+
         <div class="lado-esquerdo">
             <button class="botao-menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
             <h1 class="titulo">Oficina Show Motors</h1>
+        </div>
+
+        <div class="usuario">
+            <div>
+                <a class="link" href="index.php">Voltar</a>
+            </div>
         </div>
     </header>
 
@@ -64,8 +71,8 @@ if(isset($_POST['entrar'])){
 
     <form method="POST" class="texto">
 
-        Nome de Usuário:<br>
-        <input type="text" name="nome_usuario" required> <br><br>
+        Email:<br>
+        <input type="email" name="email" required> <br><br>
 
         Senha:<br>
         <input type="password" name="senha" required><br><br>
@@ -82,14 +89,12 @@ if(isset($_POST['entrar'])){
 
         <br><br>
 
-Não possui conta? <br>
-<a class="Texto02" href="cadastro.php">  Cadastre-se aqui</a>
+Não possui conta? <a class="Texto02" href="cadastro.php">  Cadastre-se </a>
     </form>
 
 <br><br>
 
-Perdeu a senha? <br>
-<a class="Texto02" href="recuperar.php"> Recupere-a aqui </a>
+Perdeu a senha?  <a class="Texto02" href="recuperar.php"> Clique aqui </a>
 
 </div>
 

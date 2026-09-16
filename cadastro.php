@@ -6,57 +6,93 @@ $mensagem = "";
 
 if(isset($_POST['cadastrar'])){
 
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
+    $nome = trim($_POST['nome']);
+    $email = trim($_POST['email']);
+    $telefone = trim($_POST['telefone']);
     $senha = $_POST['senha'];
     $confirmar = $_POST['confirmarSenha'];
-    
+
     //nome user
     $nomeDividido = explode(" ", $nome);
     $qtdNomes = count($nomeDividido);
 
     if ($qtdNomes < 2) {
         $nomeUser = $nomeDividido[0];
-    }
-    else {
+    } else {
         $primeiroNome = $nomeDividido[0];
         $ultimoNome = end($nomeDividido);
         $nomeUser = $primeiroNome . "." . $ultimoNome;
     }
-    
+
     if($senha != $confirmar){
 
-        $mensagem = "As senhas não coincidem.";
+        $mensagem = '
+            <script>
+            Swal.fire({
+                icon: "error",
+                title: "Tente novamente",
+                text: "As senhas não coincidem."
+            });
+            </script>';
 
-    }else{
+    } else {
 
-        $verifica = $conn->query(
-            "SELECT * FROM usuario WHERE email='$email'"
-        );
+        // verificando se o email ja existe no banco
+        $stmtVerifica = $conn->prepare("SELECT id_usuario FROM usuario WHERE email = ?");
+        $stmtVerifica->bind_param("s", $email);
+        $stmtVerifica->execute();
+        $resultado = $stmtVerifica->get_result();
 
-        if($verifica->num_rows > 0){
+        if($resultado->num_rows > 0){
 
-            $mensagem = "Este e-mail já está cadastrado.";
-
-        }else{
-
-            $sql = "INSERT INTO usuario
-            (nome_cliente, nome_usuario, email, telefone, senha)
-            VALUES
-            ('$nome', '$nomeUser', '$email','$telefone','$senha')";
-
-            if($conn->query($sql)){
-
-                echo "
+            $mensagem = '
                 <script>
-                alert('Cadastro realizado com sucesso!');
-                window.location='index.php';
-                </script>";
+                Swal.fire({
+                    icon: "error",
+                    title: "Tente novamente",
+                    text: "Este e-mail já está cadastrado."
+                });
+                </script>';
 
-                exit();
+        } else {
+        // sabor criptografia (o php passa a senha em hash pro bd guardar)
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+            $stmtInsere = $conn->prepare(
+                "INSERT INTO usuario (nome_cliente, nome_usuario, email, telefone, senha)
+                 VALUES (?, ?, ?, ?, ?)"
+            );
+            $stmtInsere->bind_param("sssss", $nome, $nomeUser, $email, $telefone, $senhaHash);
+
+            if($stmtInsere->execute()){
+
+                $mensagem = "
+        <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sucesso!',
+            text: 'Cadastro realizado com sucesso!',
+            confirmButtonText: 'OK'
+        }).then(function(){
+            window.location = 'index.php';
+        });
+        </script>";
+
+            } else {
+                $mensagem = '<script>
+                Swal.fire({
+                    icon: "error",
+                    title: "Tente novamente",
+                    text: "Erro ao cadastrar."
+                });
+                </script>';
+
             }
+
+            $stmtInsere->close();
         }
+
+        $stmtVerifica->close();
     }
 }
 ?>
@@ -65,6 +101,7 @@ if(isset($_POST['cadastrar'])){
  <TITLE>cadastro</TITLE>
 <link rel="stylesheet" href="estilizacao.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 
@@ -97,7 +134,7 @@ if(isset($_POST['cadastrar'])){
         <input type="email" name="email" required><br><br>
 
         Telefone:<br>
-        <input type="text" name="telefone" required><br><br>
+        <input type="tel" name="telefone" required><br><br>
 
         Senha:<br>
         <input type="password" name="senha" required><br><br>
@@ -107,11 +144,11 @@ if(isset($_POST['cadastrar'])){
 
 
         
-        <?php
-            if(!empty($mensagem)){
-            echo "<p>$mensagem</p>";
-            }
-        ?>
+      <?php
+    if(!empty($mensagem)){
+        echo $mensagem;
+    }
+?>
 
         <button type="submit" name="cadastrar">
             Confirmar

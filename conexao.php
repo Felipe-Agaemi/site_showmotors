@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 $host = "localhost:3308";
 $user = "root";
 $pass = "";

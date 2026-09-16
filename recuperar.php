@@ -9,7 +9,7 @@ if(isset($_POST['verificar'])){
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
 
-    $sql = "SELECT * FROM usuario
+    $sql = "SELECT * FROM usuarios
             WHERE email='$email'
             AND telefone='$telefone'";
 

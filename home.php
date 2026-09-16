@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+// se nao ta logado nao entra pae simples
+if(!isset($_SESSION['usuario'])){
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,19 +53,13 @@ session_start();
 
             <div>
 
-<?php if(isset($_SESSION['usuario'])): ?>
+<span class="link">
+    <?= htmlspecialchars($_SESSION['usuario']); ?>
+</span>
 
-    <span class="link">
-        <?= $_SESSION['usuario']; ?>
-    </span>
-
-<?php else: ?>
-
-    <a class="link" href="index.php">
-        Login
-    </a>
-
-<?php endif; ?>
+<a class="link" href="logout.php">
+    Sair
+</a>
 
 </div>
 
