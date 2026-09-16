@@ -74,7 +74,7 @@ if(isset($_POST['cadastrar'])){
             text: 'Cadastro realizado com sucesso!',
             confirmButtonText: 'OK'
         }).then(function(){
-            window.location = 'index.php';
+            window.location = 'login.php';
         });
         </script>";
 

@@ -24,11 +24,17 @@ if(isset($_POST['entrar'])){
             $_SESSION['usuario'] = $usuario['nome_cliente'];
             $_SESSION['email'] = $usuario['email'];
 
-            header("Location: index.php");
+            header("Location: home.php");
             exit();
 
         } else {
-            $mensagem = "E-mail ou senha incorretos.";
+            $mensagem = '<script>
+                Swal.fire({
+                    icon: "error",
+                    title: "Tente novamente",
+                    text: "Email ou senha incorretos."
+                });
+                </script>';
         }
 
     } else {

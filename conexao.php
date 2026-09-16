@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost:3308";
+$host = "localhost:3307";
 $user = "root";
 $pass = "";
 $db = "showmotors_database";
