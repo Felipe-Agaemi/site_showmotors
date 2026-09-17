@@ -39,6 +39,52 @@ body {
     cursor: pointer;
 }
 
+.nav-principal {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, .25);
+}
+
+.nav-principal a {
+    position: relative;
+
+    color: rgba(255, 255, 255, .8);
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+
+    padding-bottom: 4px;
+    margin-right: 30px;
+    border-bottom: 2px solid transparent;
+
+    transition: color .2s ease, border-color .2s ease;
+}
+
+.nav-principal a:last-child {
+    margin-right: 0;
+}
+
+.nav-principal a:hover {
+    color: #fff;
+}
+
+.nav-principal a.ativo {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+@media (max-width: 860px) {
+    .nav-principal {
+        display: none;
+    }
+}
+
 .titulo {
     font-size: 24px;
     font-weight: 700;
