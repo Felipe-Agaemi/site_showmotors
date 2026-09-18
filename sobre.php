@@ -39,12 +39,16 @@
 
             <h1 class="titulo">Oficina Show Motors</h1>
 
+            <nav class="nav-principal">
+                <a href="sobre.php" class="ativo">Sobre</a>
+            </nav>
+
         </div>
 
         <div class="usuario">
 
             <div>
-                <a class="link" href="login.html">
+                <a class="link" href="login.php">
                     Login
                 </a>
             </div>
