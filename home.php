@@ -46,6 +46,10 @@ if(!isset($_SESSION['usuario'])){
             </button>
 
             <h1 class="titulo">Oficina Show Motors</h1>
+
+            <nav class="nav-principal">
+                <a href="sobre.php">Sobre</a>
+            </nav>
         </div>
 
         <div class="usuario">
@@ -73,7 +77,7 @@ if(!isset($_SESSION['usuario'])){
 
     <main class="conteudo">
 
-       <section>
+       <section id="agenda">
 
             <div class="cabecalho-secao">
                 <h2>
@@ -194,7 +198,7 @@ if(!isset($_SESSION['usuario'])){
 
         </section>
 
-        <section class="secao-servicos">
+        <section class="secao-servicos" id="servicos">
 
             <div class="cabecalho-secao">
                 <h2>
