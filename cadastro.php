@@ -112,6 +112,10 @@ if(isset($_POST['cadastrar'])){
             </button>
 
             <h1 class="titulo">Oficina Show Motors</h1>
+
+            <nav class="nav-principal">
+                <a href="sobre.php">Sobre</a>
+            </nav>
         </div>
 
         <div class="usuario">
