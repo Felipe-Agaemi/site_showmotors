@@ -66,13 +66,13 @@ if(isset($_POST['entrar'])){
 
 <div class="caixa">
 
-    <form method="POST" class="texto">
+    <form method="POST" class="Texto">
 
         Nome de Usuário:<br>
-        <input type="text" name="nome_usuario" required> <br><br>
+        <input class="input_Style" type="text" name="nome_usuario" required> <br><br>
 
         Senha:<br>
-        <input type="password" name="senha" required><br><br>
+        <input class="input_Style" type="password" name="senha" required><br><br>
 
 <?php
     if(!empty($mensagem)){
