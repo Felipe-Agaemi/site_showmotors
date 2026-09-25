@@ -562,11 +562,12 @@ body {
     font-size: large;
 }
 
+/*index.php*/
 .caixa {
-    background-color: #fff;
-    border: 3.5px #eb0404 solid;
+    background-color: #fdfdfd;
     border-radius: 10px;
-    padding: 10px;
+    padding: 50px 0px;
+    box-shadow: 13px 13px 20px 10px rgba(0,0,0,.08);
 
     position: absolute;
     top: 50%;
@@ -581,6 +582,15 @@ body {
     width: 350px;
     height: 400px;
 }
+.input_Style{
+    width: 275px;
+    height: 27px;
+}
+.Texto{
+    font-size: large;
+    font-weight: bold;
+}
+/*---------*/
 
 .caixa2 {
     padding-top: 10px;
@@ -594,11 +604,6 @@ body {
     margin-right: 1vh;
     color: aliceblue;
 }
-
-.Texto {
-    color: aliceblue;
-}
-
 .Texto02 {
     color: rgb(26, 26, 26);
     text-decoration: none;
